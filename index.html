@@ -1,0 +1,40 @@
+<html>
+<head>
+    <style>
+        body {
+    font-family: "Arial";
+    background: #333;
+    color: white;
+}
+    </style>
+    <title> Weather Checker </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <input type="text" value="" id="city" placeholder="Enter You City:">
+    <button id="runbtn">Run</button>
+    <hr>
+    <h1 id="cityname">City: NaN</h1>
+    <hr>
+    <h1 id="cityweather">Weather: NaN</h1>
+    <hr>
+    <h1 id="citywindspeed">Wind Speed: NaN</h1>
+    <hr>
+</body>
+<script>document.getElementById('runbtn').addEventListener('click', (e)=> {
+    getDetails();
+})
+var citynam = document.getElementById("cityname");
+function getDetails() {
+    var place = document.getElementById("city").value;
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${place}&appid=736412f27570e2880986e590ae7278fc`)
+    .then(a => a.json())
+    .then(abc => citynam.innerHTML="City: " + abc.name);
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${place}&appid=736412f27570e2880986e590ae7278fc`)
+    .then(a => a.json())
+    .then(abc => document.getElementById("cityweather").innerHTML="Weather: " + parseInt(abc.main.temp-273.15) + " °c");
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${place}&appid=736412f27570e2880986e590ae7278fc`)
+    .then(a => a.json())
+    .then(abc => document.getElementById("citywindspeed").innerHTML="Wind Speed: " + abc.wind.speed + " km/h");
+}</script>
+</html>
