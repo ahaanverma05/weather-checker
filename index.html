@@ -1,16 +1,26 @@
 <html>
+<html>
 <head>
     <style>
         body {
     font-family: "Arial";
-    background: #333;
+    /*background: #333;*/
+    background-image: url("https://images.hdqwalls.com/wallpapers/cool-blue-temperature-sunset-2g.jpg");
+    background-size: 100% 100vh;
+    background-repeat: no-repeat;
     color: white;
+}
+#noback {
+    background: #333;
+    padding: 15px;
 }
     </style>
     <title> Weather Checker </title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="noback">
+        <img src="https://i.pinimg.com/originals/e8/1d/8d/e81d8d8032101ffab2ddc3fd1e2d8ab1.gif" style="height: 100px; width: 100px; float: right;">
     <input type="text" value="" id="city" placeholder="Enter You City:">
     <button id="runbtn">Run</button>
     <hr>
@@ -20,6 +30,7 @@
     <hr>
     <h1 id="citywindspeed">Wind Speed: NaN</h1>
     <hr>
+</div>
 </body>
 <script>document.getElementById('runbtn').addEventListener('click', (e)=> {
     getDetails();
